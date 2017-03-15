@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Set the static site live
 sudo apt-get -y install nginx
-mkdir -p /root/data/web_static/releases/test
-mkdir /root/data/web_static/shared
-echo 'Testing...' > /root/data/web_static/releases/test/index.html
-ln -sf /root/data/web_static/releases/test  /root/data/web_static/current
-chown -R ubuntu:ubuntu /root/data
+mkdir -p /data/web_static/releases/test
+mkdir /data/web_static/shared
+echo 'Testing...' > /data/web_static/releases/test/index.html
+ln -sf /data/web_static/releases/test  /data/web_static/current
+chown -R ubuntu:ubuntu /data/
 echo 'user www-data;
 worker_processes 4;
 pid /run/nginx.pid;
@@ -37,7 +37,7 @@ http {
             root /home;
         }
         location /hbnb_static/ {
-            alias /root/data/web_static/current/; 
+            alias /data/web_static/current/; 
 	   } 
         error_page 404 /404.html;
         location = /404.html {
