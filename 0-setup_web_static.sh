@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Set the static site live
 sudo apt-get -y install nginx
-mkdir -p /data/web_static/releases/test
-mkdir /data/web_static/shared
-echo 'Testing...' > /data/web_static/releases/test/index.html
-ln -sf /data/web_static/releases/test  /data/web_static/current
-chown -R ubuntu:ubuntu /data/
-echo 'user www-data;
+sudo mkdir -p /data/web_static/releases/test
+sudo mkdir /data/web_static/shared
+sudo echo 'Testing...' | sudo tee /data/web_static/releases/test/index.html > /dev/null
+sudo ln -sf /data/web_static/releases/test  /data/web_static/current
+sudo chown -R ubuntu:ubuntu /data/
+sudo echo 'user www-data;
 worker_processes 4;
 pid /run/nginx.pid;
 
