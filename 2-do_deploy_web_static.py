@@ -30,10 +30,13 @@ def do_deploy(archive_path):
     try:
         fn = archive_path.split('/')[-1]
         version = fn.split('.')[0]
+        path = '/data/web_static/releases'
         put(archive_path, "/tmp/{:s}".format(fn))
         sudo("mkdir -p /data/web_static/releases/{:s}".format(version))
         sudo('tar xvzf /tmp/{:s} -C /data/web_static/releases/{:s}'.format(
              fn, version))
+        sudo('mv {:s}/{:s}/web_static/* {:s}/{:s}'.format(
+            path, version, path, version))
         sudo('rm -f /tmp/{:s}'.format(fn))
         sudo('rm -f /data/web_static/current')
         sudo('ln -sf /data/web_static/releases/{:s} /data/web_static/current'.
