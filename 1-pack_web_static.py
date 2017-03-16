@@ -12,5 +12,5 @@ def do_pack():
         local("if [ ! -d versions ]; then\nmkdir versions\nfi")
         local("tar -cvzf {:s} web_static/".format(fn))
     except:
-        return
+        return None
     return "{}".format(fn)
