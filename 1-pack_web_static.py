@@ -6,10 +6,11 @@ from fabric.api import local
 
 
 def do_pack():
-    local('rm -rf versions')
-    local('mkdir versions')
+    """Pack project for shipment"""
     fn = 'versions/web_static_$(date +"%Y%m%d%H%M%S").tgz'
     try:
+        local('rm -rf versions')
+        local('mkdir versions')
         local("tar -cvzf {:s} web_static/".format(fn))
     except:
         return
