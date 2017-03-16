@@ -9,8 +9,7 @@ def do_pack():
     """Pack project for shipment"""
     fn = 'versions/web_static_$(date +"%Y%m%d%H%M%S").tgz'
     try:
-        local('rm -rf versions')
-        local('mkdir versions')
+        local("if [ ! -d versions ]; then\nmkdir versions\nfi")
         local("tar -cvzf {:s} web_static/".format(fn))
     except:
         return
