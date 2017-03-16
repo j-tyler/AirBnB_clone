@@ -8,10 +8,13 @@ from datetime import datetime
 
 env.hosts = ["54.145.142.123", "52.54.98.43"]
 
-archive_path = do_pack()
-if archive_path == None:
-    return False
-return do_deploy(archive_path)
+
+def deploy():
+    """Full deployment"""
+    archive_path = do_pack()
+    if archive_path is None:
+        return False
+    return do_deploy(archive_path)
 
 
 def do_pack():
