@@ -13,4 +13,4 @@ def do_pack():
         local("tar -cvzf {:s} web_static/".format(fn))
     except:
         return
-    return fn
+    return "{}".format(fn)
