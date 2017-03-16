@@ -12,7 +12,7 @@ def do_pack():
          datetime.strftime(datetime.now(), "%Y%m%d%H%M%S"))
     try:
         local("if [ ! -d versions ]; then\nmkdir versions\nfi")
-        local("tar -cvzf {:s} web_static/".format(fn))
+        local("tar -cvzf {:s} web_static/*".format(fn))
     except:
         return None
     return "{}".format(fn)
